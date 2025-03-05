@@ -18,6 +18,11 @@
     "@angular/platform-browser": "^19.1.0",
     "@angular/platform-browser-dynamic": "^19.1.0",
     "@angular/router": "^19.1.0",
+    "@prizm-ui/components": "^5.7.0",
+    "@prizm-ui/core": "^5.7.0",
+    "@prizm-ui/helpers": "^5.7.0",
+    "@prizm-ui/install": "^4.3.1",
+    "@prizm-ui/theme": "^5.7.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.15.0"

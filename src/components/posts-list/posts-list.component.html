@@ -1,0 +1,19 @@
+<div class="posts-list">
+  <app-selector (authorId)="setAuthorId($event)"></app-selector>
+  <a [routerLink]="['/post-add']">
+    <button prizmButton appearanceType="outline" appearance="secondary">Добавить пост</button>
+  </a>
+
+  @for (post of filtredPosts; track post.id) {
+  <div class="posts-list-post">
+    <div class="post-border">
+      <a [routerLink]="['/post', post.id]">
+        <prizm-panel header="{{post.title}}" subheader="{{nameById(post.userId)}}"> </prizm-panel>
+        <span>
+          {{post.body}}
+        </span>
+      </a>
+    </div>
+  </div>
+  } @empty { <li class='no-data'>Данные отсутсвуют</li> }
+</div>

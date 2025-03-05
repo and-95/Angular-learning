@@ -1,0 +1,37 @@
+
+
+a{
+    display: block;  
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
+
+
+.form{
+
+    display: flex;
+    justify-content: center;
+    flex-direction:column;
+    
+
+    prizm-input-layout{
+        padding: 10px;
+    }
+
+    .form-name{
+        max-width: 500px;
+    }
+
+    .button{
+        min-width: 200px;
+        margin: 0 auto;
+        display: block;
+    }
+
+    .error{
+        color: red;
+        margin-left: 20px;
+        margin-bottom: 10px;
+        font-size: 12px
+    }
+}

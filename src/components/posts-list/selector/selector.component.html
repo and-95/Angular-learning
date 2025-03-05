@@ -1,0 +1,7 @@
+<div class="selector">
+    <prizm-input-layout label="Выберите автора">
+        <prizm-input-select [items]="authorsIdPrizm" [formControl]="selectAuthorIdPrizm" [stringify]="stringifyPrizm">
+        </prizm-input-select>
+    </prizm-input-layout>
+    <button type="button" prizmButton appearanceType="outline" (click)="setDefaultId()" appearance="secondary">Сбросить выбор</button>
+</div>

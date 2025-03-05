@@ -1,0 +1,23 @@
+<a [routerLink]="['']">
+  <button prizmButton appearanceType="outline" appearance="warning">Назад</button>
+</a>
+<div class="post">
+  <prizm-panel header="{{thisPost.title}}" subheader="{{nameById(thisPost.userId)}}"> </prizm-panel>
+  <span>
+    {{thisPost.body}}
+  </span>
+</div>
+<div class="comments">
+  <h1 style="text-align: center;">Комментарии к посту</h1>
+  <hr>
+  @for (comment of commentsForPost; track comment.id) {
+  <div class="post">
+    <prizm-panel header="{{comment.name}}" subheader="{{comment.email}}"> </prizm-panel>
+    <span>
+      {{comment.body}}
+    </span>
+  </div>
+  } @empty {
+  <li class='no-data'>Нет комментариев</li>
+  }
+</div>

@@ -1,0 +1,48 @@
+.button{
+    margin-left: 20px;
+}
+a{
+    display: block;  
+    margin-left: 10px;
+}
+.post {
+    margin: 20px;
+
+    .post-author {
+        padding: 10px;
+        max-width: 350px;
+        background: white;
+    }
+
+    .post-title {
+
+        max-width: 500px;
+        background: white;
+        padding: 10px;
+    }
+}
+
+.comments{
+    margin-top: 100px;
+    
+    .comment{
+        margin-top: 10px;
+        border: 0.1em solid;
+        background: rgb(165, 162, 162);
+    }
+}
+
+.post{
+    padding: 0px 10px 0px 10px;
+    .post-border{
+        display: flex;
+        flex-direction: column;
+        border-radius: 2px;
+        border: 2px solid var(--prizm-background-stroke);
+    }
+    span{
+        padding: 10px;
+        color: var(--prizm-text-icon-secondary);
+        flex: 1;
+    }
+}
