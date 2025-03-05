@@ -1,5 +1,7 @@
 # PetProject
 
+ API jsonplaceholder работает некорректно с некоторыми браузерами и иногда не отвечает на запросы. В Хроме работает через раз, в САФАРИ работает отлично.
+
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.1.7.
 
 ## Development server
