@@ -1,62 +1,26 @@
-# PetProject
 
- API jsonplaceholder работает некорректно с некоторыми браузерами и иногда не отвечает на запросы. В Хроме работает через раз, в САФАРИ работает отлично.
-Главная страница тянет данные из моков (можно убрать комментарий в коде posts-list.component.ts и будет происходить запрос на сервер). Комментарии и страница поста тянут данные из запросов всегда. Добавление поста так же реализовано на запросе.
+Требуется отобразить на экране посты, получаемые через API с сервера https://jsonplaceholder.typicode.com/ :
+1) Отобразить все посты + реализовать возможность фильтровать посты по автору (автор выбирается в select);
+2) Реализовать страницу поста с выводом на ней комментариев к этому посту;
+3) Реализовать возможность добавить новый пост выбранному автору;
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.1.7.
+Структура проекта: 
+src/
+    app/                            - точка старта Роутинга в приложении
+        /components                 - папка содержит основные компоненты
+            /forum-page             - компонент стартовой страницы (содержит роутинг для остальных компонентов)
+            /post-list              - компонент для отображения постов
+                /post               - страница конкретного поста с комментариями
+                /post-add           - страница добавления поста
+                /post-selector      - компонент выбора автора. Используется для фильтрации постов и выбора автора при добавлении поста.
+                /services           - сервис с запросами к северу и сервис обработки ошибок запросов
+        /shared                     - папка с моками и интерфейсами
 
-## Development server
-
-To start a local development server, run:
-
-```bash
-ng serve
-```
-
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+UPD:
+11.03.25 
+    1) Реализован обработчик ошибок запросов в /post-list/services/error-handler.service.ts - всплывающее окно поверх других окон.
+    Сообщает на экране поверх других окон, что запрос вернулся с ошибкой. В консоль пишет саму ошибку.
+    2) Изменена структура проекта: в папке components хранятся 2 копонента. В копонентах хранятся их подкомпоненты и сервисы.
+    3) Доработана типизация, где ее не было
+    4) Добавлены сигналы и эффекты для реактивного изменения данных
+    5) Исправлен README

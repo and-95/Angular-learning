@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, effect, signal } from '@angular/core';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
-import { PostsService } from '../../../services/posts.service';
+import { PostsService } from '../services/posts.service';
 import { PrizmPanelComponent,PrizmButtonComponent } from '@prizm-ui/components';
 
 
@@ -9,10 +9,10 @@ import { PrizmPanelComponent,PrizmButtonComponent } from '@prizm-ui/components';
   imports: [PrizmPanelComponent,PrizmButtonComponent,RouterLink],
   templateUrl: './post.component.html',
   styleUrl: './post.component.scss',
-  providers: [PostsService, ],
+  providers: [PostsService],
 })
 export class PostComponent {
-  routeId = 0;
+  routeId = signal<number>(0);
   thisPost = {
     "userId": 0,
     "id": 0,
@@ -28,17 +28,21 @@ export class PostComponent {
       "body": ""
     }];
 
-  constructor(private route: ActivatedRoute, private postService: PostsService, private router: Router) { }
+  constructor(private route: ActivatedRoute, private postService: PostsService, private router: Router) 
+  {
+    effect(() => {
+    this.postService.getPost(this.routeId()).subscribe(posts => { this.thisPost = posts; })
+    this.postService.getComments(this.routeId()).subscribe(comments => { this.commentsForPost = comments; })
+    });
+   }
 
   ngOnInit() {
     this.route.params.subscribe(paramsId => {
-      this.routeId = paramsId['id']; // Получаем значение параметра
+      this.routeId.set(paramsId['id']); // Получаем значение параметра
     });
-    this.postService.getPost(this.routeId).subscribe(posts => { this.thisPost = posts; })
-    this.postService.getComments(this.routeId).subscribe(comments => { this.commentsForPost = comments; })
   }
 
-  nameById(userId: any) {
+  nameById(userId: number) {
     if (userId == null) { return } else { return this.postService.nameById(userId); }
   }
 }

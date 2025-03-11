@@ -1,13 +1,13 @@
-<div class="posts-list">
-  <app-selector (authorId)="setAuthorId($event)"></app-selector>
-  <a [routerLink]="['/post-add']">
+<div iv class="posts-list">
+  <app-selector (authorId)="this.authorId.set($event)"></app-selector>
+  <a [routerLink]="['add']">
     <button prizmButton appearanceType="outline" appearance="secondary">Добавить пост</button>
   </a>
 
   @for (post of filtredPosts; track post.id) {
   <div class="posts-list-post">
     <div class="post-border">
-      <a [routerLink]="['/post', post.id]">
+      <a [routerLink]="[post.id]">
         <prizm-panel header="{{post.title}}" subheader="{{nameById(post.userId)}}"> </prizm-panel>
         <span>
           {{post.body}}
@@ -15,5 +15,10 @@
       </a>
     </div>
   </div>
-  } @empty { <li class='no-data'>Данные отсутсвуют</li> }
+  } @empty { 	<div style="width: 150px; color: var(--prizm-text-icon-primary); margin: 0 auto;">
+    <prizm-loader [showLoader]="true" [overlay]="true" >
+      Загрузка контента
+    </prizm-loader>
+  </div> <br>
+  }
 </div>
