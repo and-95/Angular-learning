@@ -1,10 +1,11 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
-import { PostsService } from '../../../services/posts.service'; 
+import { PostsService } from '../services/posts.service';
 import { PrizmButtonComponent,PrizmInputTextModule,PrizmAutoResizeDirective } from '@prizm-ui/components';
-import { SelectorComponent } from '../selector/selector.component';
+import { SelectorComponent } from '../post-selector/selector.component';
 import { RouterLink } from '@angular/router';
+import { IPostData } from '../../../shared/IPost';
 
 @Component({
   selector: 'app-post-add',
@@ -28,14 +29,13 @@ export class PostAddComponent {
 
   setAuthorId(authorId:number){
     this.formData.userId = authorId;
-    console.log( this.formData.userId)
   }
 
   submitPost() {
     if (this.postForm.invalid || this.formData.userId == 0) {
       return;
     }
-    const postData = this.postForm.value;
+    const postData:IPostData = this.postForm.value;
     postData.userId = this.formData.userId;
     this.postService.addPost(postData).subscribe({
         next: (response) => {

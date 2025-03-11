@@ -14,7 +14,6 @@
       Название поста обязательно!
     </div>
     }
-
     <prizm-input-layout label="Текст поста:">
       <textarea [prizmAutoResize]="true" prizmInput placeholder="Введите заголовок" id="postText"
         formControlName="text"></textarea>
@@ -25,7 +24,6 @@
       Текст поста обязателен!
     </div>
     }
-    
     <button class="button" prizmButton appearanceType="outline" appearance="success" type="submit"
       [disabled]="this.postForm.invalid || this.formData.userId == 0">Отправить</button>
   </form>

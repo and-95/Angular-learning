@@ -9,3 +9,9 @@ export type AuthorsNames = {
   id: number;
   name: string;
 };
+
+export interface IPostData {
+  "userId": number;
+  "title": string;
+  "text": string;
+}
